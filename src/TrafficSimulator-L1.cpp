@@ -75,10 +75,10 @@ int main() {
   std::vector<std::shared_ptr<Vehicle>> vehicles;
   std::string backgroundImg;
 
-  // Task L1.3 : Vary the number of simulated vehicles and use the top function
+  // Vary the number of simulated vehicles and use the top function
   // on the terminal or the task manager of your system to observe the number of
   // threads used by the simulation.
-  int nVehicles = 4;
+  int nVehicles = 6;
   createTrafficObjects(streets, intersections, vehicles, backgroundImg,
                        nVehicles);
 
