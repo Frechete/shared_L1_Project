@@ -31,7 +31,7 @@ class TrafficObject {
   int _id;              // every traffic object has its own unique id
   double _posX, _posY;  // vehicle position in pixels
   std::vector<std::thread>
-      _threads;  // holds all threads that have been launched within this object
+      threads;  // holds all threads that have been launched within this object
 
  private:
   static int _idCnt;  // global variable for counting object ids

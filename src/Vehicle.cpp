@@ -28,6 +28,7 @@ void Vehicle::simulate() {
 
 // virtual function which is executed in a thread
 void Vehicle::drive() {
+    
   // print id of the current thread
   std::cout << "Vehicle #" << _id
             << "::drive: thread id = " << std::this_thread::get_id()

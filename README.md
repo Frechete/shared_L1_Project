@@ -1,2 +1,2 @@
-# shared_L1_Project
+# shared_L_Project
 udacity workspace
