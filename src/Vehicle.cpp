@@ -28,7 +28,6 @@ void Vehicle::simulate() {
 
 // virtual function which is executed in a thread
 void Vehicle::drive() {
-    
   // print id of the current thread
   std::cout << "Vehicle #" << _id
             << "::drive: thread id = " << std::this_thread::get_id()
@@ -78,12 +77,21 @@ void Vehicle::drive() {
 
       // check wether halting position in front of destination has been reached
       if (completion >= 0.9 && !hasEnteredIntersection) {
-        // Task L2.1 : Start up a task using std::async which takes a reference
+        // Start up a task using std::async which takes a reference
         // to the method Intersection::addVehicleToQueue, the object
         // _currDestination and a shared pointer to this using the
         // get_shared_this() function. Then, wait for the data to be available
         // before proceeding to slow down.
 
+        // launch a thread that modifies the Vehicle name
+        // std::future<void> ftr = std::async([](Intersection i,
+        // &_currDestination) {
+        //    i.addVehicleToQueue(_currDestination);
+        //},std::move(intersect));
+
+        std::future<void> ftr = std::async(&Intersection::addVehicleToQueue,
+                                           _currDestination, get_shared_this());
+        ftr.wait();
         // slow down and set intersection flag
         _speed /= 10.0;
         hasEnteredIntersection = true;
